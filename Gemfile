@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 # Added Gems
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'figaro'
 
 
 group :development do 
