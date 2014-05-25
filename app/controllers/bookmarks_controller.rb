@@ -14,7 +14,7 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark = current_user.bookmarks.build(bookmark_params)
     if @bookmark.save
       redirect_to @bookmark, notice: "#{@bookmark.name} was created!"
     else
