@@ -19,4 +19,4 @@
 /config/application.yml
 
 # Secrets YML
-/locales/secrets.yml
+secrets.yml
