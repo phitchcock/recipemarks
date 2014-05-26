@@ -28,7 +28,7 @@ class BookmarksController < ApplicationController
   end
 
   def update
-    if @bookmark.save(bookmark_params)
+    if @bookmark.update(bookmark_params)
       redirect_to @bookmark, notice: "#{@bookmark.name} was updated!"
     else
       flash[:error] = "Bookmark was not updated, please try again"

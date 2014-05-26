@@ -1,0 +1,8 @@
+<h1>Topics Index</h1>
+
+<% @topics.each do |topic| %>
+  <div>
+    <h3><%= link_to topic.name, topic %></h3>
+    <p><%= topic.description %></p>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 <% if obj.errors.any? %>
   <div>
       <ul>
-        <%= obj.errors.full_messages.each do |message| %>
+        <% obj.errors.full_messages.each do |message| %>
           <li>
             <%= message %>
           </li>
