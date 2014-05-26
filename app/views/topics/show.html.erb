@@ -1,3 +1,15 @@
-<h1>Show Topics</h1>
+<h1><%= @topic.name %><small> [<%= link_to 'new bookmark', new_topic_bookmark_path(@topic) %>]</small></h1>
 
-<h3><%= @topic.name %></h3>
+<div class="row">
+  <% @bookmarks.each do |bookmark| %>
+  <div class="col-md-3">
+    <div class="thumbnail">
+      <img src="http://placehold.it/300x200">
+      <div class="caption">
+        <h3><%= link_to bookmark.name, [bookmark.topic, bookmark] %></h3>
+        <h3><%= bookmark.url %></h3>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

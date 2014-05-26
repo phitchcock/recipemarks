@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :set_topic
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,8 +17,10 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = current_user.bookmarks.build(bookmark_params)
+    @bookmark.topic = @topic
+
     if @bookmark.save
-      redirect_to @bookmark, notice: "#{@bookmark.name} was created!"
+      redirect_to [@topic, @bookmark], notice: "#{@bookmark.name} was created!"
     else
       flash[:error] = "Bookmark was not created, please try again"
       render :new
@@ -53,5 +56,9 @@ class BookmarksController < ApplicationController
 
   def set_bookmark
     @bookmark = Bookmark.find(params[:id])
+  end
+
+  def set_topic
+    @topic = Topic.find(params[:topic_id])
   end
 end

@@ -4,10 +4,11 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.all 
+    @topics = Topic.all
   end
 
   def show
+    @bookmarks = @topic.bookmarks
   end
 
   def new

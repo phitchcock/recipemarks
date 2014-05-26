@@ -1,8 +1,17 @@
-<h1>Topics Index</h1>
+<h1>Topics</h1>
 
 <% @topics.each do |topic| %>
-  <div>
-    <h3><%= link_to topic.name, topic %></h3>
-    <p><%= topic.description %></p>
+  <div class="row">
+    <h3>#<%= link_to topic.name, topic %></h3>
+    <div class="col-md-3">
+      <h5>#TODO loop through bookmarks</h5>
+       <div class="thumbnail">
+        <img src="http://placehold.it/300x200">
+        <div class="caption">
+          <h3>Bookmark Name</h3>
+          <h3>Bookmark Url</h3>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
