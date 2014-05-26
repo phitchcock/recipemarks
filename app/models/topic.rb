@@ -1,4 +1,7 @@
 class Topic < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :history
+  
   has_many :bookmarks
 
   validates :name, presence: true

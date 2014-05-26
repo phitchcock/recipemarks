@@ -53,6 +53,6 @@ class TopicsController < ApplicationController
   end
 
   def set_topic
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
   end
 end

@@ -55,10 +55,10 @@ class BookmarksController < ApplicationController
   end
 
   def set_bookmark
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = Bookmark.friendly.find(params[:id])
   end
 
   def set_topic
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
   end
 end
