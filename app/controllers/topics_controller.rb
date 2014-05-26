@@ -4,11 +4,11 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.all
+    @topics = Topic.paginate(:page => params[:page], :per_page => 2)
   end
 
   def show
-    @bookmarks = @topic.bookmarks
+    @bookmarks = @topic.bookmarks.paginate(:page => params[:page], :per_page => 2)
   end
 
   def new
