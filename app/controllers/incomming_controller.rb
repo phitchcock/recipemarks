@@ -10,6 +10,7 @@ class IncomingController < ApplicationController
 
     # You put the message-splitting and business
     # magic here. 
+    match_header('subject', '#')
 
     # Assuming all went well. 
     head 200

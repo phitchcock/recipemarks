@@ -9,6 +9,7 @@ class BookmarksController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -20,7 +21,7 @@ class BookmarksController < ApplicationController
     @bookmark.topic = @topic
 
     if @bookmark.save
-      redirect_to [@topic, @bookmark], notice: "#{@bookmark.name} was created!"
+      redirect_to @topic, notice: "#{@bookmark.name} was created!"
     else
       flash[:error] = "Bookmark was not created, please try again"
       render :new
@@ -32,7 +33,7 @@ class BookmarksController < ApplicationController
 
   def update
     if @bookmark.update(bookmark_params)
-      redirect_to @bookmark, notice: "#{@bookmark.name} was updated!"
+      redirect_to [@topic, @bookmark], notice: "#{@bookmark.name} was updated!"
     else
       flash[:error] = "Bookmark was not updated, please try again"
       render :edit
@@ -41,10 +42,10 @@ class BookmarksController < ApplicationController
 
   def destroy
     if @bookmark.destroy
-      redirect_to bookmarks_path, notice: "#{@bookmark.name} was destroyed!"
+      redirect_to user_path, notice: "#{@bookmark.name} was destroyed!"
     else
       flash[:error] = "Bookmarks was not destroyed, please try again"
-      redirect_to @bookmark
+      redirect_to user_path
     end
   end
 

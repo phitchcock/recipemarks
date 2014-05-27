@@ -2,3 +2,5 @@
 
 <h3><%= @bookmark.name %></h3>
 <h3><%= @bookmark.url %></h3>
+<p><%= link_to 'edit', edit_topic_bookmark_path(@bookmark.topic, @bookmark) %></p>
+<p><%= link_to 'delete', topic_bookmark_path(@bookmark.topic, @bookmark), method: :delete, data: {confirm: 'Really?'} %></p>
