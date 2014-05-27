@@ -2,9 +2,9 @@
 <hr>
 
 <% @topics.each do |topic| %>
-  <%= render partial: 'topics', object: topic, locals: {bookmarks: topic.bookmarks } %>
+  <%= render partial: 'topic', object: topic, locals: {bookmarks: topic.bookmarks } %>
 <% end %>
 
-<div id="infinite-scrolling">
-  <%= will_paginate @topics, renderer: BootstrapPagination::Rails %>
-</di>
+<!-- <div id="infinite-scrolling">
+  <%#= will_paginate @topics, renderer: BootstrapPagination::Rails %>
+</di> -->

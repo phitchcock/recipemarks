@@ -4,12 +4,12 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.paginate(:page => params[:page], :per_page => 4)
-    @bookmarks = Bookmark.all
+    @topics = Topic.paginate(:page => params[:page], :per_page => 5)
+    @bookmarks = Bookmark.tagged_with(params[:tag])
   end
 
   def show
-    @bookmarks = @topic.bookmarks.paginate(:page => params[:page], :per_page => 4)
+    @bookmarks = @topic.bookmarks.tagged_with(params[:tag])
     @bookmark = Bookmark.new
   end
 

@@ -12,6 +12,10 @@ class IncomingController < ApplicationController
     # magic here. 
     match_header('subject', '#')
 
+    # @user = User.find_by(email: from)
+    # @bookmark = Bookmark.new(url: subject, tag_list: body)
+    # @bookmark.save
+
     # Assuming all went well. 
     head 200
   end

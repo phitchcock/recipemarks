@@ -2,6 +2,8 @@ class Bookmark < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :history
 
+  acts_as_taggable_on :tags
+
   belongs_to :topic
   belongs_to :user
   

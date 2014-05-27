@@ -5,12 +5,18 @@ class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bookmarks = Bookmark.all 
+    if params[:tag].present?
+      @bookmarks = Bookmark.tagged_with(params[:tag])
+    else
+      @bookmarks = Bookmark.all 
+    end
   end
+   
 
   def show
-
   end
+
+
 
   def new
     @bookmark = Bookmark.new
