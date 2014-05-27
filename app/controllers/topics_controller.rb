@@ -4,11 +4,13 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.paginate(:page => params[:page], :per_page => 2)
+    @topics = Topic.paginate(:page => params[:page], :per_page => 5)
+    @bookmarks = Bookmark.all
   end
 
   def show
-    @bookmarks = @topic.bookmarks.paginate(:page => params[:page], :per_page => 2)
+    @bookmarks = @topic.bookmarks.paginate(:page => params[:page], :per_page => 5)
+    @bookmark = Bookmark.new
   end
 
   def new
@@ -20,7 +22,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to @topic, notice: "#{@topic.name} was created!"
     else
-      flash[:error] = "Topic was not created, please try again"
+      flash.now[:error] = "Topic was not created, please try again"
       render :new
     end
   end
@@ -32,7 +34,7 @@ class TopicsController < ApplicationController
     if @topic.update(topic_params)
       redirect_to @topic, notice: "#{@topic.name} was updated!"
     else
-      flash[:error] = "Topic was not updated, please try again"
+      flash.now[:error] = "Topic was not updated, please try again"
       render :edit
     end
   end

@@ -23,7 +23,7 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to @topic, notice: "#{@bookmark.name} was created!"
     else
-      flash[:error] = "Bookmark was not created, please try again"
+      flash.now[:error] = "Bookmark was not created, please try again"
       render :new
     end
   end
@@ -35,7 +35,7 @@ class BookmarksController < ApplicationController
     if @bookmark.update(bookmark_params)
       redirect_to [@topic, @bookmark], notice: "#{@bookmark.name} was updated!"
     else
-      flash[:error] = "Bookmark was not updated, please try again"
+      flash.now[:error] = "Bookmark was not updated, please try again"
       render :edit
     end
   end

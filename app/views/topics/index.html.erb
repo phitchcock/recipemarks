@@ -1,14 +1,7 @@
 <h1>Topics</h1>
+<hr>
 
-<% @topics.each do |topic| %>
-  <div class="row">
-    <h3>#<%= link_to topic.name, topic %></h3>
-    <%#= render @bookmarks %>
-    <div class="col-md-4">
-      <h3><%= topic.bookmarks.count %></h3>
-    </div>
-  </div>
-<% end %>
+<%= render @topics %>
 
 <div id="infinite-scrolling">
   <%= will_paginate @topics, renderer: BootstrapPagination::Rails %>
