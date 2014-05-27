@@ -38,8 +38,8 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    if @topic.destory
-      redirect_to @topics, notice: "#{@topic.name} was destroyed!"
+    if @topic.destroy
+      redirect_to topics_path, notice: "#{@topic.name} was destroyed!"
     else
       flash[:error] = "Topic was not destroyed, please try again"
       redirect_to @topic

@@ -8,6 +8,7 @@
       <div class="caption">
         <h3><%= link_to bookmark.name, [bookmark.topic, bookmark] %></h3>
         <h3><%= bookmark.url %></h3>
+        <%#= link_to 'delete', topic_bookmark_path[topic, bookmark.topic], method: :delete, data: {confirm: 'Really?'} %>
       </div>
     </div>
   </div>
