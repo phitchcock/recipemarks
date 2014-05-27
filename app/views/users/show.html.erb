@@ -1,7 +1,8 @@
 <h1><%= @user.email %>'s Bookmarks</h1>
 
+<% @user.bookmarks.each do |bookmark| %>
+<h3><%= link_to bookmark.topic.name, bookmark.topic %></h3>
 <div class="row">
-  <% @user.bookmarks.each do |bookmark| %>
   <div class="col-md-3">
     <div class="thumbnail">
       <img src="http://placehold.it/300x200">
@@ -12,6 +13,6 @@
       </div>
     </div>
   </div>
-  <% end %>
 </div>
-<%= will_paginate @bookmarks, renderer: BootstrapPagination::Rails %>
+<% end %>
+<%#= will_paginate @bookmarks, renderer: BootstrapPagination::Rails %>
