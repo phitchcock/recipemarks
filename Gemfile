@@ -15,6 +15,7 @@ gem 'figaro'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'friendly_id', '~> 5.0.0'
+gem 'faker'
 
 
 group :development do 

@@ -1,6 +1,4 @@
 <div class="row">
-  <h3>#<%= link_to topic.name, topic %></h3>
-  <h3><%= topic.bookmarks.count %></h3>
-  
-  <%= render @bookmarks %>
+  <h3>#<%= link_to topic.name, topic %><small> has <%= topic.bookmarks.count %> bookmarks</small></h3>
+  <%= render topic.bookmarks %>
 </div>
