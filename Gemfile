@@ -17,11 +17,13 @@ gem 'will_paginate-bootstrap'
 gem 'friendly_id', '~> 5.0.0'
 gem 'faker'
 gem 'acts-as-taggable-on'
+gem 'rspec-rails'
 
 
 group :development do 
   gem 'sqlite3'
   gem 'spring'
+  gem 'pry'
 end
 
 group :production do 

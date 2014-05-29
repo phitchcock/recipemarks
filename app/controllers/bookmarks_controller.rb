@@ -1,22 +1,15 @@
 class BookmarksController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_topic
-  before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
+  before_action :set_bookmark, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   def index
-    if params[:tag].present?
-      @bookmarks = Bookmark.tagged_with(params[:tag])
-    else
-      @bookmarks = Bookmark.all 
-    end
+    #@bookmarks = Bookmark.tagged_with(params[:tag])
+    @bookmarks = Bookmark.all
   end
    
-
   def show
   end
-
-
 
   def new
     @bookmark = Bookmark.new
@@ -24,10 +17,9 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = current_user.bookmarks.build(bookmark_params)
-    @bookmark.topic = @topic
 
     if @bookmark.save
-      redirect_to @topic, notice: "#{@bookmark.name} was created!"
+      redirect_to @bookmark, notice: "#{@bookmark.name} was created!"
     else
       flash.now[:error] = "Bookmark was not created, please try again"
       render :new
@@ -39,7 +31,7 @@ class BookmarksController < ApplicationController
 
   def update
     if @bookmark.update(bookmark_params)
-      redirect_to [@topic, @bookmark], notice: "#{@bookmark.name} was updated!"
+      redirect_to @bookmark, notice: "#{@bookmark.name} was updated!"
     else
       flash.now[:error] = "Bookmark was not updated, please try again"
       render :edit
@@ -55,6 +47,8 @@ class BookmarksController < ApplicationController
     end
   end
 
+  
+
   private
 
   def bookmark_params
@@ -65,7 +59,4 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.friendly.find(params[:id])
   end
 
-  def set_topic
-    @topic = Topic.friendly.find(params[:topic_id])
-  end
 end

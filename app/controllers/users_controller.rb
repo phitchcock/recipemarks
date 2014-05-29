@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     #@topic = Topic.friendly.find(params[:id])
     #@bookmarks = @user.bookmarks.order('topic_id DESC').paginate(:page => params[:page], :per_page => 10)
     @bookmarks = @user.bookmarks
+    #@tag = ActsAsTaggableOn::Tag.find(params[:id])
+    #@bookmarks = @tag.user.bookmarks
   end
 
   def update

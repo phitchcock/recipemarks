@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   #get 'tags/:tag', to: 'topics#index', as: :tag
 
   devise_for :users
+  
   resources :users, only: [:show, :create, :destroy]
 
-  resources :topics do 
-    resources :bookmarks, except: [:index]
-  end
 
+  resources :bookmarks
+
+
+  resources :tags 
+  
   post :incoming, to: 'incoming#create'
 end

@@ -17,18 +17,10 @@ require 'faker'
 end
 users = User.all
 
-5.times do 
-  Topic.create(
-    name: Faker::Internet.domain_word,
-    description: Faker::Lorem.sentence
-  )
-end
-topics = Topic.all
 
-50.times do 
+3.times do 
   Bookmark.create(
     user: users.sample,
-    topic: topics.sample,
     name: Faker::Internet.domain_word,
     url: Faker::Internet.domain_name
     )
@@ -36,5 +28,5 @@ end
 
 
 puts "Seed finished"
-puts "#{Topic.count} posts created"
+puts "created"
 puts "#{Bookmark.count} comments created"

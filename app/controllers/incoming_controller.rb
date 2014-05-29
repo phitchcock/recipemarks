@@ -6,17 +6,20 @@ class IncomingController < ApplicationController
   def create
     # Take a look at these in your server logs
     # to get a sense of what you're dealing with.
-    puts "INCOMING PARAMS HERE: #{params}"
+    # puts "INCOMING PARAMS HERE: #{params}"
 
     # You put the message-splitting and business
     # magic here. 
-    match_header('subject', '#')
+    # match_header('subject', '#')
 
-    # @user = User.find_by(email: from)
-    # @bookmark = Bookmark.new(url: subject, tag_list: body)
-    # @bookmark.save
-
-    # Assuming all went well. 
-    head 200
+    @user = User.find_by(email: params[:from])
+    @bookmark = Bookmark.new(name: params[:subject], url: params['stripped-text'])
+    @bookmark.user = @user
+    if @bookmark.save
+      # Assuming all went well. 
+      head 200
+    else
+      head 404
+    end
   end
 end

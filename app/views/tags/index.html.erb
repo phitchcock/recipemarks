@@ -1,0 +1,29 @@
+<h3>Tags</h3>
+<hr>
+<% @tags.each do |tag| %>
+  <h3>#<%= link_to tag.name, tag_path(tag) %></h3>
+  <div class="row">
+    <% tag.taggings.map(&:taggable).each do |bookmark| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <img src="http://placehold.it/300x200">
+          <div class="caption">
+            <h3><%= link_to bookmark.name, bookmark %></h3>
+            <p>url: <%= bookmark.url %></p>
+            <p><%= link_to 'edit', edit_bookmark_path(bookmark) %></p>
+            <p><%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: {confirm: 'Really?'} %></p>
+            <% if bookmark.tags.any? %>
+              <% bookmark.tags.each do |tag| %>
+                <p>tag: <%= link_to tag.name %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<!-- <div id="infinite-scrolling">
+  <%#= will_paginate @topics, renderer: BootstrapPagination::Rails %>
+</di> -->

@@ -2,18 +2,16 @@
   <div class="thumbnail">
     <img src="http://placehold.it/300x200">
     <div class="caption">
-      <h3><%= link_to bookmark.name, [bookmark.topic, bookmark] %></h3>
+      <h3><%= link_to bookmark.name, bookmark %></h3>
       <p>url: <%= bookmark.url %></p>
-      <p><%= link_to 'edit', edit_topic_bookmark_path(bookmark.topic, bookmark) %></p>
-      <p><%= link_to 'delete', topic_bookmark_path(bookmark.topic, bookmark), method: :delete, data: {confirm: 'Really?'} %></p>
-      <p>Topic: <%= bookmark.topic.name %></p>
-
+      <p><%= link_to 'edit', edit_bookmark_path(bookmark) %></p>
+      <p><%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: {confirm: 'Really?'} %></p>
       <% if bookmark.tags.any? %>
         <% bookmark.tags.each do |tag| %>
-          <%= tag.name %>
+          <p>tag: <%= link_to tag.name %></p>
         <% end %>
       <% end %>
-
+      
     </div>
   </div>
 </div>

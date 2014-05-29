@@ -2,9 +2,11 @@
 <hr>
 
 <div class="row">
-  <% @bookmarks.group_by{ |bookmark| bookmark.topic}.each do |topic, bookmarks| %>
-    <%= render partial: 'topics/topic', object: topic, locals: { bookmarks: bookmarks } %>
-  <% end %>
+  <%= render @bookmarks %>
+
+  <%# @bookmarks.group_by{ |bookmark| bookmark.topic}.each do |topic, bookmarks| %>
+    <%#= render partial: 'topics/topic', object: topic, locals: { bookmarks: bookmarks } %>
+  <%# end %>
 </div>
   
 
